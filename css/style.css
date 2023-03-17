@@ -6,39 +6,122 @@
     margin: 0;
 }
 
-.container {
+.boxed {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0.5em;
-    border: dashed 3px white;
+    /* font-size: 2vw; */
 }
 
-/************ BODY ************/
+/* Regola per desktop (se usata da sola: approccio mobile-first) */
+@media screen and (min-width: 1024px) {
+    .boxed {
+        /* max-width: 900px; */
+        /* padding: 3em; */
+        /* font-size: 4em; */
+        /* transition: all 0.1s; */
+    }
+}
+
+/* Esempio di media query con MIN e MAX (es. tablet) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .boxed {
+        /* max-width: 800px; */
+        /* font-size: 0.5em; */
+        /* transition: all 0.1s; */
+    }
+}
+
+/* Regola per mobile (se usata da sola: approccio desktop-first) */
+@media screen and (max-width: 768px) {
+    .boxed {
+        /* max-width: 700px; */
+        /* width: 80%; */
+    }
+}
+
+.flex { display: flex; }
+
+.bg-gray    { background-color: gray; }
+.bg-aqua    { background-color: aqua; }
+.bg-yellow  { background-color: greenyellow; }
+.bg-pink    { background-color: salmon; }
+.bg-white   { background-color: white; }
+
+.padding05  { padding: 0.5em; }
+.padding10  { padding: 1.0em; }
+.padding20  { padding: 2.0em; }
+
+.square {
+    width: 200px;
+    height: 200px;
+    margin: 1em;
+}
 
 body {
-    background-color: black;
     padding: 1em;
 }
 
-/* Regola per desktop, approccio mobile-first */
+/************ CONTENT ************/
+.container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Regola per mobile (se usata da sola: approccio desktop-first) */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: wrapper;
+    }
+}
+
+.wrapper {
+    width: 25%;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .wrapper {
+        width: 50%;
+    }
+}
+
+/* Regola per mobile (se usata da sola: approccio desktop-first) */
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+/************ DEBUG ************/
+/* Ricordate di inserire classi di debug AL FONDO
+* del file, per poterle cancellare rapidamente */
+
+body.debug {
+    background-color: black;
+}
+
+/* Regola per desktop (se usata da sola: approccio mobile-first) */
 @media screen and (min-width: 1024px) {
-    body {
+    body.debug {
         background-color: green;
     }
 }
 
 /* Esempio di media query con MIN e MAX (es. tablet) */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    body {
+    body.debug {
         background-color: goldenrod;
     }
 }
 
-/* Regola per mobile, approccio desktop-first */
+/* Regola per mobile (se usata da sola: approccio desktop-first) */
 @media screen and (max-width: 768px) {
-    body {
+    body.debug {
         background-color: crimson;
     }
 }
 
-/************ CONTENT ************/
+body.debug .boxed {
+    border: dashed 3px black;
+}
